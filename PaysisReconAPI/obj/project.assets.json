@@ -998,23 +998,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Mandar\\.nuget\\packages\\": {},
+    "C:\\Users\\mandar.palse\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Workspace\\Projects\\Recon\\PaysisReconAPI\\PaysisReconAPI\\PaysisReconAPI.csproj",
+      "projectUniqueName": "D:\\Workspace\\Projects\\Recon\\Paysis\\AppCode\\PaysisRecon_Core\\ReconRepoAPI-main\\ReconRepoAPI-main\\PaysisReconAPI\\PaysisReconAPI.csproj",
       "projectName": "PaysisReconAPI",
-      "projectPath": "D:\\Workspace\\Projects\\Recon\\PaysisReconAPI\\PaysisReconAPI\\PaysisReconAPI.csproj",
-      "packagesPath": "C:\\Users\\Mandar\\.nuget\\packages\\",
-      "outputPath": "D:\\Workspace\\Projects\\Recon\\PaysisReconAPI\\PaysisReconAPI\\obj\\",
+      "projectPath": "D:\\Workspace\\Projects\\Recon\\Paysis\\AppCode\\PaysisRecon_Core\\ReconRepoAPI-main\\ReconRepoAPI-main\\PaysisReconAPI\\PaysisReconAPI.csproj",
+      "packagesPath": "C:\\Users\\mandar.palse\\.nuget\\packages\\",
+      "outputPath": "D:\\Workspace\\Projects\\Recon\\Paysis\\AppCode\\PaysisRecon_Core\\ReconRepoAPI-main\\ReconRepoAPI-main\\PaysisReconAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Mandar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\mandar.palse\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1041,7 +1041,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "10.0.200"
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net9.0": {
@@ -1087,7 +1087,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

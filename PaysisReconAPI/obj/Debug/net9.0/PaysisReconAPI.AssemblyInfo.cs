@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PaysisReconAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dcdba96e7f094d497b4cc8da0179d85a2c509b31")]
 [assembly: System.Reflection.AssemblyProductAttribute("PaysisReconAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PaysisReconAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
