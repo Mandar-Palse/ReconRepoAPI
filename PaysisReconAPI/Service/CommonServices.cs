@@ -7,11 +7,11 @@ namespace PaysisReconAPI.Service
     public class CommonServices
     {
 
-        private readonly CommonRepository ObjCommonRepository = null;
+       private readonly CommonRepository ObjCommonRepository = null;
 
         public CommonServices(IDataDbContext db)
         {
-            ObjCommonRepository = new CommonRepository(db);
+            ObjCommonRepository = new CommonRepository(db); 
         }
         public void Insert_ErrorLog(ErrorMasterModel ObjErrorMasterModel)
         {

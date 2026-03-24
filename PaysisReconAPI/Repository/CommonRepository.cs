@@ -37,6 +37,7 @@ namespace PaysisReconAPI.Repository
                     var conn = con.BeginTransaction();
                     con.Query(query, dp);
                     conn.Commit();
+                    //con.Query<string>("usp_errorlog_insert", dp, commandType: CommandType.StoredProcedure).FirstOrDefault();
                     con.Close();
                 }
             }
