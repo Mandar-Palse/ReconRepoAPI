@@ -1,9 +1,8 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36408.4 d17.14
+VisualStudioVersion = 17.14.36408.4
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaysisReconAPI", "PaysisReconAPI\PaysisReconAPI.csproj", "{7972715B-0064-43A2-987F-3E9932A7CB53}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaysisReconAPI", "PaysisReconAPI\PaysisReconAPI.csproj", "{089F1C62-2501-5396-2D77-04B246BADFDC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +10,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7972715B-0064-43A2-987F-3E9932A7CB53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7972715B-0064-43A2-987F-3E9932A7CB53}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7972715B-0064-43A2-987F-3E9932A7CB53}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7972715B-0064-43A2-987F-3E9932A7CB53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{089F1C62-2501-5396-2D77-04B246BADFDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{089F1C62-2501-5396-2D77-04B246BADFDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{089F1C62-2501-5396-2D77-04B246BADFDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{089F1C62-2501-5396-2D77-04B246BADFDC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

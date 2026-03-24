@@ -26,10 +26,10 @@ namespace PaysisReconAPI.Repository
                 using (var con = _db.GetOpenSqlConnection())
                 {
                     var dp = new DynamicParameters();
-                    dp.Add("p_businessdate", businessdate, DbType.String);
-                    dp.Add("p_network", network, DbType.String);
+                    dp.Add("@p_businessdate", businessdate, DbType.String);
+                    dp.Add("@p_network", network, DbType.String);
                     con.BeginTransaction();
-                    result = con.Query<bool>("usp_get_recon_confirmation", dp, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    result = con.Query<bool>("Select * From usp_get_recon_confirmation(@p_businessdate,@p_network)", dp).FirstOrDefault();
                     con.Close();
                 }
             }
@@ -54,10 +54,10 @@ namespace PaysisReconAPI.Repository
                 using (var con = _db.GetOpenSqlConnection())
                 {
                     var dp = new DynamicParameters();
-                    dp.Add("p_businessdate", businessdate, DbType.String);
-                    dp.Add("p_network", network, DbType.String);
+                    dp.Add("@p_businessdate", businessdate, DbType.String);
+                    dp.Add("@p_network", network, DbType.String);
                     var x = con.BeginTransaction();
-                    result = con.Query<string>("usp_recon_exists_confirmation", dp, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    result = con.Query<string>("Select * usp_recon_exists_confirmation(@p_businessdate,@p_network)", dp).FirstOrDefault();
                     x.Commit();
                     con.Close();
                 }
@@ -83,11 +83,11 @@ namespace PaysisReconAPI.Repository
                 using (var con = _db.GetOpenSqlConnection())
                 {
                     var dp = new DynamicParameters();
-                    dp.Add("p_businessdate", businessdate, DbType.String);
-                    dp.Add("p_userid", userid, DbType.String);
-                    dp.Add("p_network", network, DbType.String);
+                    dp.Add("@p_businessdate", businessdate, DbType.String);
+                    dp.Add("@p_userid", userid, DbType.String);
+                    dp.Add("@p_network", network, DbType.String);
                     var x = con.BeginTransaction();
-                    result = con.Query<string>("usp_insert_recon_confirmationDetails", dp, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    result = con.Query<string>("Select * from usp_insert_recon_confirmationDetails(@p_businessdate,@p_userid,@p_network)", dp).FirstOrDefault();
                     x.Commit();
                     con.Close();
                 }
@@ -113,10 +113,10 @@ namespace PaysisReconAPI.Repository
                 using (var con = _db.GetOpenSqlConnection())
                 {
                     var dp = new DynamicParameters();
-                    dp.Add("p_businessdate", businessdate, DbType.String);
-                    dp.Add("p_network", network, DbType.String);
+                    dp.Add("@p_businessdate", businessdate, DbType.String);
+                    dp.Add("@p_network", network, DbType.String);
                     con.BeginTransaction();
-                    result = con.Query<RecongroupList>("usp_ret_recongrouplist", dp, commandType: CommandType.StoredProcedure).ToList();
+                    result = con.Query<RecongroupList>("Select * From usp_ret_recongrouplist(@p_businessdate,@p_network)", dp).ToList();
                     con.Close();
                 }
             }
@@ -143,10 +143,10 @@ namespace PaysisReconAPI.Repository
                 using (var con = _db.GetOpenSqlConnection())
                 {
                     var dp = new DynamicParameters();
-                    dp.Add("p_businessdate", businessdate, DbType.String);
-                    dp.Add("p_network", network, DbType.String);
+                    dp.Add("@p_businessdate", businessdate, DbType.String);
+                    dp.Add("@p_network", network, DbType.String);
                     var x = con.BeginTransaction();
-                    result = con.Query<ReconStatusMaster>("usp_request_recon_statusdetails", dp, commandType: CommandType.StoredProcedure).ToList();
+                    result = con.Query<ReconStatusMaster>("Select * From usp_request_recon_statusdetails(@p_businessdate,@p_network)", dp).ToList();
                     con.Close();
                 }
             }
@@ -171,11 +171,11 @@ namespace PaysisReconAPI.Repository
                 using (var con = _db.GetOpenSqlConnection())
                 {
                     var dp = new DynamicParameters();
-                    dp.Add("p_recongroupid", recongroupid, DbType.Int32);
-                    dp.Add("p_businessdate", businessdate, DbType.String);
-                    dp.Add("p_requestby", requestby, DbType.Int32);
+                    dp.Add("@p_recongroupid", recongroupid, DbType.Int32);
+                    dp.Add("@p_businessdate", businessdate, DbType.String);
+                    dp.Add("@p_requestby", requestby, DbType.Int32);
                     var x = con.BeginTransaction();
-                    result = con.Query<string>("usp_request_recon", dp, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    result = con.Query<string>("Select * From usp_request_recon(@p_recongroupid,@p_businessdate,@p_requestby)", dp).FirstOrDefault();
                     x.Commit();
                     con.Close();
                 }
@@ -192,5 +192,6 @@ namespace PaysisReconAPI.Repository
             }
             return result;
         }
+
     }
 }
