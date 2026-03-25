@@ -115,10 +115,10 @@ namespace PaysisReconAPI.Repository
                 using (var con = _db.GetOpenSqlConnection())
                 {
                     var dp = new DynamicParameters();
-                    dp.Add("p_uploaddate", uploaddate, DbType.String);
-                    dp.Add("p_network", network, DbType.String);
+                    dp.Add("@p_uploaddate", uploaddate, DbType.String);
+                    dp.Add("@p_network", network, DbType.String);
                     con.BeginTransaction();
-                    result = con.Query<Fileuploaddata>("usp_get_fileuploaddatafromUpload", dp, commandType: CommandType.StoredProcedure).ToList();
+                    result = con.Query<Fileuploaddata>("Select * from usp_get_fileuploaddatafromUpload(@p_uploaddate,@p_network)", dp).ToList();
                     con.Close();
                 }
             }
