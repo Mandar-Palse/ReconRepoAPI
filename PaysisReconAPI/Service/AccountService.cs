@@ -5,6 +5,7 @@ using PaysisReconAPI.Repository;
 namespace PaysisReconAPI.Service
 {
     public class AccountService
+
     {
         private readonly AccountRepository _accRepo;
 

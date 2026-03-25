@@ -19,7 +19,6 @@ namespace PaysisReconAPI.Controllers
         [HttpGet("GetReconConfirmedDetails")]
         public async Task<IActionResult> GetReconConfirmedDetails(DateTime businessDate, string channel)
         {
-
             bool result = mastersService.GetReconConfirmedDetailsServices(businessDate.ToString(), channel);
 
             return Ok(result);

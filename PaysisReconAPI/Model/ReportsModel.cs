@@ -8,7 +8,7 @@
         public string reportstatus { get; set; }
 
         public string reportdate { get; set; }
-        public string reportedon { get; set; }
+        public string reportedon { get; set; }  
         public string generatedOn { get; set; }
         public string reportfilepath { get; set; }
         public string ttumreportfilepath { get; set; }

@@ -20,7 +20,7 @@ namespace PaysisReconAPI.Controllers
         }
 
         [HttpGet("GetNetworkList")]
-        public IActionResult Get(string Channel)
+        public IActionResult GetNetworkList(string Channel)
         {
             List<Network> result = new List<Network>();
             result = commonService.GetNetworkListServices(Channel);
