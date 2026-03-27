@@ -28,7 +28,7 @@ namespace PaysisReconAPI.Service
             return ObjCommonRepository.insert_into_fileuploaddata(fileid, filename, filepath, filepath_archive);
         }
 
-        public List<Fileuploaddata> GetFileUploadDataListFromUploadServices(string uploaddate, string network)
+        public List<Fileuploaddata> GetFileUploadDataListFromUploadServices(DateTime uploaddate, string network)
         {
             return ObjCommonRepository.GetFileUploadDataListFromUpload(uploaddate, network);
         }

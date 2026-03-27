@@ -26,7 +26,7 @@ namespace PaysisReconAPI.Repository
                 {
                     using (var trans = con.BeginTransaction())
                     {
-                        watcher = con.Query<WatcherModel>("usp_GetFileWatcherDetails_new", null, commandType: CommandType.StoredProcedure).ToList();
+                        watcher = con.Query<WatcherModel>("Select * from recon.usp_GetFileWatcherDetails_new()", null).ToList();
                         trans.Commit();
                         con.Close();
                     }
@@ -55,9 +55,9 @@ namespace PaysisReconAPI.Repository
                 using (var con = _db.GetOpenSqlConnection())
                 {
                     var dp = new DynamicParameters();
-                    dp.Add("p_filename", filename, DbType.String);
+                    dp.Add("@p_filename", filename, DbType.String);
                     con.BeginTransaction();
-                    result = con.Query<string>("usp_validate_FileExistornot", dp, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    result = con.Query<string>("Select * from recon.usp_validate_FileExistornot(@p_filename)", dp).FirstOrDefault();
                     con.Close();
                 }
             }
@@ -83,12 +83,12 @@ namespace PaysisReconAPI.Repository
                 using (var con = _db.GetOpenSqlConnection())
                 {
                     var dp = new DynamicParameters();
-                    dp.Add("p_fileid", fileid, DbType.Int32);
-                    dp.Add("p_filename", filename, DbType.String);
-                    dp.Add("p_filepath", filepath, DbType.String);
-                    dp.Add("p_filepath_archive", filepath_archive, DbType.String);
+                    dp.Add("@p_fileid", fileid, DbType.Int32);
+                    dp.Add("@p_filename", filename, DbType.String);
+                    dp.Add("@p_filepath", filepath, DbType.String);
+                    dp.Add("@p_filepath_archive", filepath_archive, DbType.String);
                     var x = con.BeginTransaction();
-                    result = con.Query<string>("usp_insert_fileuploaddata", dp, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    result = con.Query<string>("Select * from recon.usp_insert_fileuploaddata(@p_fileid,@p_filename,@p_filepath,@p_filepath_archive)", dp).FirstOrDefault();
                     x.Commit();
                     con.Close();
                 }
@@ -107,7 +107,7 @@ namespace PaysisReconAPI.Repository
             return result;
         }
 
-        public List<Fileuploaddata> GetFileUploadDataListFromUpload(string uploaddate, string network)
+        public List<Fileuploaddata> GetFileUploadDataListFromUpload(DateTime uploaddate, string network)
         {
             List<Fileuploaddata> result = new List<Fileuploaddata>();
             try
@@ -115,10 +115,10 @@ namespace PaysisReconAPI.Repository
                 using (var con = _db.GetOpenSqlConnection())
                 {
                     var dp = new DynamicParameters();
-                    dp.Add("@p_uploaddate", uploaddate, DbType.String);
+                    dp.Add("@p_uploaddate", uploaddate, DbType.Date);
                     dp.Add("@p_network", network, DbType.String);
                     con.BeginTransaction();
-                    result = con.Query<Fileuploaddata>("Select * from usp_get_fileuploaddatafromUpload(@p_uploaddate,@p_network)", dp).ToList();
+                    result = con.Query<Fileuploaddata>("Select * from recon.usp_get_fileuploaddatafromUpload(@p_uploaddate,@p_network)", dp).ToList();
                     con.Close();
                 }
             }
@@ -135,5 +135,6 @@ namespace PaysisReconAPI.Repository
             }
             return result;
         }
+
     }
 }

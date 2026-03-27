@@ -14,7 +14,9 @@
         public int id { get; set; }
         public string filedescription { get; set; }
         public string filename { get; set; }
-        public string businessdate { get; set; }
+
+        //public string businessdate { get; set; }
+        public DateOnly businessdate { get; set; }
         public string temp_tbl_count { get; set; }
         public string data_tbl_count { get; set; }
         public string final_tbl_count { get; set; }

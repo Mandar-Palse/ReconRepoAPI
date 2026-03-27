@@ -32,7 +32,7 @@ namespace PaysisReconAPI.Repository
 
                 using (var con = _db.GetOpenSqlConnection())
                 {
-                    var query = "SELECT * FROM usp_errorlog_insert(@p_function_name, @p_errorcode, @p_error_message, @p_exception_context,@p_errordescription)";
+                    var query = "SELECT * FROM recon.usp_validate_FileExistornot(@p_function_name, @p_errorcode, @p_error_message, @p_exception_context,@p_errordescription)";
 
                     var conn = con.BeginTransaction();
                     con.Query(query, dp);
@@ -58,7 +58,7 @@ namespace PaysisReconAPI.Repository
                     using (var trans = con.BeginTransaction())
                     {
                         dp.Add("@p_network", network, DbType.String, ParameterDirection.Input, 0);
-                        retVal = con.Query<Network>("Select * from usp_getnetworkdropdownlist(@p_network)", dp).ToList();
+                        retVal = con.Query<Network>("Select * from recon.usp_getnetworkdropdownlist(@p_network)", dp).ToList();
                         trans.Commit();
                         con.Close();
                     }
@@ -90,7 +90,7 @@ namespace PaysisReconAPI.Repository
                     using (var trans = con.BeginTransaction())
                     {
                         dp.Add("p_event", "@getfiletypeMasterlist", DbType.String, ParameterDirection.Input, 0);
-                        retVal = con.Query<filetypeModel>("Select * from usp_getfilemasterdropdowndetails(@getfiletypeMasterlist)", dp, commandType: CommandType.StoredProcedure).ToList();
+                        retVal = con.Query<filetypeModel>("Select * from recon.usp_getfilemasterdropdowndetails(@getfiletypeMasterlist)", dp).ToList();
                         trans.Commit();
                         con.Close();
                     }
@@ -122,7 +122,7 @@ namespace PaysisReconAPI.Repository
                     dp.Add("@p_reportstatusid", id, DbType.Int32);
                     dp.Add("@p_BusinessDate", BusinessDate, DbType.String);
                     dp.Add("@p_network", network, DbType.String);
-                    retVal = con.Query<ReportsModel>("Select * from usp_getReportRequests(@p_reportstatusid,@p_BusinessDate,@p_network)", dp).ToList();
+                    retVal = con.Query<ReportsModel>("Select * from recon.usp_getReportRequests(@p_reportstatusid,@p_BusinessDate,@p_network)", dp).ToList();
                     con.Close();
                 }
             }
@@ -159,7 +159,7 @@ namespace PaysisReconAPI.Repository
                     dp.Add("@p_reporttodate", Convert.ToDateTime(ObjReportsModel.reporttodate), DbType.DateTime, ParameterDirection.Input, 0);
                     using (var con = _db.GetOpenSqlConnection())
                     {
-                        con.Query<VouchersModel>("Select * from usp_ReportRequestDateRangeReport_Insert(@p_rsid,@p_reportid,@p_reportdate,@p_filetypeid,@p_actionflag,@p_reporttodate,@p_rspcode)", dp, commandType: CommandType.StoredProcedure);
+                        con.Query<VouchersModel>("Select * from recon.usp_ReportRequestDateRangeReport_Insert(@p_rsid,@p_reportid,@p_reportdate,@p_filetypeid,@p_actionflag,@p_reporttodate,@p_rspcode)", dp);
                         con.Close();
                         RspCode = dp.Get<String>("p_rspcode");
                     }
@@ -168,7 +168,7 @@ namespace PaysisReconAPI.Repository
                 {
                     using (var con = _db.GetOpenSqlConnection())
                     {
-                        con.Query<ReportsModel>("Select * from usp_ReportRequest_Insert(@p_rsid,@p_reportid,@p_reportdate,@p_filetypeid,@p_actionflag,@p_rspcode)", dp, commandType: CommandType.StoredProcedure);
+                        con.Query<ReportsModel>("Select * from recon.usp_ReportRequest_Insert(@p_rsid,@p_reportid,@p_reportdate,@p_filetypeid,@p_actionflag,@p_rspcode)", dp, commandType: CommandType.StoredProcedure);
                         con.Close();
                         RspCode = dp.Get<String>("p_rspcode");
                     }
@@ -199,9 +199,9 @@ namespace PaysisReconAPI.Repository
                     DynamicParameters dp = new DynamicParameters();
                     using (var trans = con.BeginTransaction())
                     {
-                        dp.Add("p_Event", "getReportMasterlist", DbType.String, ParameterDirection.Input, 0);
-                        dp.Add("p_id", id, DbType.Int32, ParameterDirection.Input, 0);
-                        retVal = con.Query<ReportsModel>("usp_getfilemasterdropdowndetails", dp, commandType: CommandType.StoredProcedure).ToList();
+                        dp.Add("@p_Event", "getReportMasterlist", DbType.String, ParameterDirection.Input, 0);
+                        dp.Add("@p_id", id, DbType.Int32, ParameterDirection.Input, 0);
+                        retVal = con.Query<ReportsModel>("Select * from usp_getfilemasterdropdowndetails(@p_Event,@p_id)", dp).ToList();
                         trans.Commit();
                         con.Close();
                     }
@@ -232,7 +232,7 @@ namespace PaysisReconAPI.Repository
                     var dp = new DynamicParameters();
                     dp.Add("p_reportstatusid", reportstatusid, DbType.String);
                     var x = con.BeginTransaction();
-                    result = con.Query<string>("usp_delete_reportrequest", dp, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    result = con.Query<string>("usp_delete_reportrequest", dp).FirstOrDefault();
                     x.Commit();
                     con.Close();
                 }
@@ -250,5 +250,6 @@ namespace PaysisReconAPI.Repository
             }
             return result;
         }
+
     }
 }

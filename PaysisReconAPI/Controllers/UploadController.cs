@@ -71,7 +71,7 @@ namespace PaysisReconAPI.Controllers
         {
             List<Fileuploaddata> result = new List<Fileuploaddata>();
 
-            result = mastersService.GetFileUploadDataListFromUploadServices(businessDate.ToString(), "ATM");
+            result = mastersService.GetFileUploadDataListFromUploadServices(businessDate, "IMPS");
 
             //List<Fileuploaddata> result = new List<Fileuploaddata>
             //{

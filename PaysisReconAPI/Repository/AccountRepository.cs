@@ -28,7 +28,7 @@ namespace PaysisReconAPI.Repository
 
                 using (var con = _db.GetOpenSqlConnection())
                 {
-                    var query = "SELECT * FROM public.usp_authenticatecustomer(@p_username, @p_password, @p_hostname, @p_myip)";
+                    var query = "SELECT * FROM recon.usp_authenticatecustomer(@p_username, @p_password, @p_hostname, @p_myip)";
 
                     retVal = con.Query<ResponseStatus>(query, dp).FirstOrDefault();
 
